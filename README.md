@@ -93,6 +93,7 @@ $ find . -name '*.jar'
 ./build/libs/EurekaServer-0.0.1-SNAPSHOT.jar
 ```
 #### jar 실행
+- EurekaServer/build/libs 폴더에 Build 됨. 
 ```text
 $ java -jar EurekaServer-0.0.1-SNAPSHOT.jar                               
 
@@ -103,6 +104,15 @@ $ java -jar EurekaServer-0.0.1-SNAPSHOT.jar
   '  |____| .__|_| |_|_| |_\__, | / / / /
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.3)
+```
+## Git Push
+```git
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/hermeswing/EureakServer.git
+git push -u origin main
 ```
 
 ## 오류
@@ -125,4 +135,6 @@ Execution failed for task ':compileJava'.
                   - Doesn't say anything about its elements (required them preferably in the form of class files)
 ```
 - 기본적올 Springboot 3.x는 11버전 이상이어야 함.
-- JVM Version을 올려서 해결하였음.
+- JVM Version을 올려서 해결하였음. -> Zulu JDK 17.0.10
+#### 대부분 JVM Version 문제로 발생된 문제였음.
+- 차후 JDK 11 버전으로 개발 해봐야 겠음. 아마도 SpringBoot 2.x 버전으로 다운그래드 할 듯...
