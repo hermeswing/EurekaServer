@@ -6,6 +6,7 @@
   - `implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server`
   - dependency에 포함되어 있다.
 - SpringBoot Eureka Server : 현재 최신버전 4.1.0
+- build tools : gradle
 
 ## Source
 - 유레카 서버(Erureka Server)의 개발은 간단하다.
@@ -93,9 +94,11 @@ $ find . -name '*.jar'
 ./build/libs/EurekaServer-0.0.1-SNAPSHOT.jar
 ```
 #### jar 실행
-- EurekaServer/build/libs 폴더에 Build 됨. 
+- [프로젝트 디렉토리]/build/libs 폴더에 Build 됨. 
+- `java -jar EurekaServer-0.0.1-SNAPSHOT.jar `
 ```text
-$ java -jar EurekaServer-0.0.1-SNAPSHOT.jar                               
+# java -jar ./workspace/EurekaServer/build/libs/EurekaServer-0.0.1-SNAPSHOT.jar
+# java -jar EurekaServer-0.0.1-SNAPSHOT.jar                               
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
