@@ -1,4 +1,4 @@
-# 유레카 서버(Erureka Server)
+# 유레카 서버 (Erureka Server)
 
 ## 개발환경
 - JDK : Zulu JDK 17.0.10
@@ -7,6 +7,24 @@
   - dependency에 포함되어 있다.
 - SpringBoot Eureka Server : 현재 최신버전 4.1.0
 - build tools : Gradle
+
+## Spring Cloud 버전과 Spring Boot 버전 및 JDK 의 버전 호환성
+- 참조
+```text
+https://spring.io/projects/spring-cloud#overview  
+https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-Versions
+```
+| Release Train        | Spring Boot Generation                | JDK 버전 ( LTS ) | 비고   |
+|----------------------|---------------------------------------|----------------|------|
+| 2023.0.x aka Leyton  | 3.2.x                                 | JDK 17         |      |
+| 2022.0.x aka Kilburn | 3.0.x, 3.1.x (Starting with 2022.0.3) | JDK 17         |      |
+| 2021.0.x aka Jubilee | 2.6.x, 2.7.x (Starting with 2021.0.3) | JDK 11         |      |
+| 2020.0.x aka Ilford  | 2.4.x, 2.5.x (Starting with 2020.0.3) | JDK 11         |      |
+| Hoxton               | 2.2.x, 2.3.x (Starting with SR5)      | JDK 8, 11      |      |
+| Greenwich            | 2.1.x                                 | JDK 8          | 지원종료 |
+| Finchley             | 2.0.x                                 | JDK 8          | 지원종료 |
+| Edgware              | 1.5.x                                 | JDK 6, 7, 8    | 지원종료 |
+| Dalston              | 1.5.x                                 | JDK 6, 7, 8    | 지원종료 |
 
 ## Source
 - 유레카 서버(Erureka Server)의 개발은 간단하다.
@@ -51,19 +69,25 @@ tasks.named('test') {
   useJUnitPlatform()
 }
 ```
+
 #### EurekaServerApplication.java
 ```java
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+
 @SpringBootApplication
 @EnableEurekaServer               // 스프링 서비스에서 유레카 서버 활성화
 public class EurekaServerApplication {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        SpringApplication.run(EurekaServerApplication.class, args);
-    }
+    SpringApplication.run(EurekaServerApplication.class, args);
+  }
 
 }
 ```
+
 #### application.yml
 ```yml
 # 유레카 서버 Port
@@ -80,6 +104,7 @@ client:
 register-with-eureka: false     # eureka server에 자신을 등록하지 않음. registry에 등록할지 여부. false로 하지 않으면 자기 자신을 클라이언트로 등록함
 fetch-registry: false           # 레지스트리 정보를 로컬에 캐싱하지 않음. registry에 있는 정보들을 가져올지 여부
 ```
+
 ## Build
 #### 프로젝트 디렉토리에서 실행한다.
 ```text
@@ -93,6 +118,7 @@ $ find . -name '*.jar'
 ./gradle/wrapper/gradle-wrapper.jar
 ./build/libs/EurekaServer-0.0.1-SNAPSHOT.jar
 ```
+
 #### jar 실행
 - [프로젝트 디렉토리]/build/libs 폴더에 Build 됨. 
 - `java -jar EurekaServer-0.0.1-SNAPSHOT.jar `
@@ -108,6 +134,10 @@ $ find . -name '*.jar'
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.3)
 ```
+
+## 관리 URL
+`http://localhost:8761`
+
 ## Git Push
 ```git
 git init
@@ -139,5 +169,6 @@ Execution failed for task ':compileJava'.
 ```
 - 기본적올 Springboot 3.x는 11버전 이상이어야 함.
 - JVM Version을 올려서 해결하였음. -> Zulu JDK 17.0.10
+
 #### 대부분 JVM Version 문제로 발생된 문제였음.
 - 차후 JDK 11 버전으로 개발 해봐야 겠음. 아마도 SpringBoot 2.x 버전으로 다운그래드 할 듯...
