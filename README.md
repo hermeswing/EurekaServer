@@ -175,7 +175,7 @@ git init
 git add README.md
 git commit -m "first commit"
 git branch -M main
-git remote add origin https://github.com/hermeswing/EureakServer.git
+git remote add origin https://github.com/hermeswing/EurekaServer.git
 git push -u origin main
 ```
 
