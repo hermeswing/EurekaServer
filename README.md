@@ -3,15 +3,28 @@
 # Spring Cloud 아키텍처 관계도
 [크라우드 아키텍처](./dm_img/cloud-3-dark.svg)
 
-# Eureka 란?
+# Eureka 란? ( ChatGPT )
+- Eureka 는 Netflix 에서 개발한 오픈 소스 기반의 서비스 디스커버리 서버입니다. 이는 분산 시스템에서 서비스 인스턴스의 위치를 추적하고 관리하는 데 사용됩니다.  
+  주요 기능은 다음과 같습니다:
+  - 서비스 등록 및 검색 : Eureka 는 서비스 인스턴스가 등록되면 자동으로 검색 가능하게 만들어줍니다.  
+    따라서 클라이언트 애플리케이션은 Eureka 서버에 등록된 서비스의 인스턴스를 찾을 수 있습니다.
+  - 가용성과 장애 복구 : Eureka 는 서비스 인스턴스의 상태를 지속적으로 모니터링하고, 일시적인 장애 또는 다운된 인스턴스를 감지하면 해당 인스턴스를 제외시킵니다.  
+    이렇게 함으로써 시스템의 가용성을 향상시키고 장애 복구를 용이하게 합니다.
+  - 클라우드 네이티브 지원 : Eureka 는 클라우드 네이티브 환경에서의 사용을 고려하여 설계되었습니다.  
+    즉, 동적인 환경에서 서비스 인스턴스를 쉽게 관리할 수 있습니다.
+  - 강력한 확장성 : Eureka 는 대규모 시스템에서도 잘 확장될 수 있는 구조로 설계되었습니다.  
+    따라서 시스템의 크기가 커져도 성능과 확장성을 유지할 수 있습니다.
+- Eureka 는 Spring Cloud 에서 기본적으로 제공되는 서비스 디스커버리 솔루션 중 하나이며, Spring 애플리케이션과의 통합이 용이합니다.  
+  이를 통해 개발자는 간편하게 마이크로서비스 아키텍처를 구축하고 운영할 수 있습니다.
+
+- Eureka 는 Eureka Server 와 Eureka Client 로 구성된다.
 - MSA 아키텍처에서 client-side service discovery 역할을 한다.
-  - 컨테이너 pod는 언제든 꺼졌다가 켜졌다가 할 수 있으므로 host와 port가 동적으로 변하더라도 서비스 인스턴스를 관리할 수 있어야 한다.
+  - 컨테이너 pod 는 언제든 꺼졌다가 켜졌다가 할 수 있으므로 host 와 port 가 동적으로 변하더라도 서비스 인스턴스를 관리할 수 있어야 한다.
   - 이를 도와주는 것이 Spring Cloud 의 Eureka Server 인 것이다.
 - Eureka 는 middle-tier load balancer 로 정의된다.
   - middle-tier load balancer 는 로드밸런싱과 장애복구가 가능한 서비스 환경을 구성했을 때 클라이언트에게 사용 가능한 서비스의 위치 정보를 동적으로 제공해야한다.
   - 마이크로서비스들의 정보를 레지스트리에 등록할 수 있도록 하고 마이크로서비스의 동적인 탐색과 로드밸런싱을 제공한다.
-- 클라우드 환경에서는 서버의 위치가 동적으로 변하고 있기에 더욱 주목받는 기술이다.
-- Eureka 는 Eureka Server 와 Eureka Client 로 구성된다.
+  - 클라우드 환경에서는 서버의 위치가 동적으로 변하고 있기에 더욱 주목받는 기술이다.
 - Eureka Client 의 서비스가 시작 될 때 Eureka Server 에 자신의 정보를 등록한다.
   - 등록된 후에는 30초마다 레지스트리에 ping 을 전송하여 자신이 가용 상태임을 알리는데 일정 횟수 이상 ping 이 확인되지 않으면 Eureka Server 에서 해당 서비스를 레지스트리에서 제외시킨다.
 - 레지스트리의 정보는 모든 Eureka Client 에 복제되어 있어 필요할 때마다 가용 상태인 모든 서비스들의 목록을 확인할 수 있고 이 목록은 30초마다 갱신된다.
@@ -26,7 +39,7 @@
 - build tools : Gradle
 
 ## Spring Cloud 버전과 Spring Boot 버전 및 JDK 의 버전 호환성
-- 참조
+- 출처
 ```text
 https://spring.io/projects/spring-cloud#overview  
 https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-Versions
