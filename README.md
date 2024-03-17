@@ -1,7 +1,7 @@
 # 유레카 서버 (Eureka Server)
 
-# Spring Cloud 아키텍처 관계도
-[크라우드 아키텍처](./dm_img/cloud-3-dark.svg)
+# Spring Cloud 아키텍처 관계도 ( 출처 : https://spring.io/cloud )
+![크라우드 아키텍처](./md_img/cloud-3-dark.svg)
 
 # Eureka 란? ( ChatGPT )
 - Eureka 는 Netflix 에서 개발한 오픈 소스 기반의 서비스 디스커버리 서버입니다. 이는 분산 시스템에서 서비스 인스턴스의 위치를 추적하고 관리하는 데 사용됩니다.  
