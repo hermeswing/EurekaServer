@@ -207,10 +207,10 @@ Execution failed for task ':compileJava'.
 ## 참고 URL
 > Spring Cloud Netflix : https://cloud.spring.io/spring-cloud-netflix/reference/html/  
 > Eureka self-preservation : https://subji.github.io/posts/2020/08/11/springcloudeurekaregistry  
-> Eureka self-preservation : https://dzone.com/articles/the-mystery-of-eurekas-self-preservation
-> Eureka 설정 : https://coe.gitbook.io/guide/service-discovery/eureka
-> Eureka 설정 : https://coe.gitbook.io/guide/service-discovery/eureka_2
-> Eureka 설정 : https://velog.io/@ililil9482/series/jayeon
-> Spring Cloud 구축 : https://sjh9708.tistory.com/120
+> Eureka self-preservation : https://dzone.com/articles/the-mystery-of-eurekas-self-preservation  
+> Eureka 설정 : https://coe.gitbook.io/guide/service-discovery/eureka  
+> Eureka 설정 : https://coe.gitbook.io/guide/service-discovery/eureka_2  
+> Eureka 설정 : https://velog.io/@ililil9482/series/jayeon  
+> Spring Cloud 구축 : https://sjh9708.tistory.com/120  
 > API Gateway in Spring boot : https://medium.com/@ankithahjpgowda/api-gateway-in-spring-boot-3ea804003021 ( https://medium.com/@ankithahjpgowda )
 > 
