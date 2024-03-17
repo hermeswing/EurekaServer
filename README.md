@@ -1,10 +1,27 @@
-# 유레카 서버 (Erureka Server)
+# 유레카 서버 (Eureka Server)
+
+# Spring Cloud 아키텍처 관계도
+[크라우드 아키텍처](./dm_img/cloud-3-dark.svg)
+
+# Eureka 란?
+- MSA 아키텍처에서 client-side service discovery 역할을 한다.
+  - 컨테이너 pod는 언제든 꺼졌다가 켜졌다가 할 수 있으므로 host와 port가 동적으로 변하더라도 서비스 인스턴스를 관리할 수 있어야 한다.
+  - 이를 도와주는 것이 Spring Cloud 의 Eureka Server 인 것이다.
+- Eureka 는 middle-tier load balancer 로 정의된다.
+  - middle-tier load balancer 는 로드밸런싱과 장애복구가 가능한 서비스 환경을 구성했을 때 클라이언트에게 사용 가능한 서비스의 위치 정보를 동적으로 제공해야한다.
+  - 마이크로서비스들의 정보를 레지스트리에 등록할 수 있도록 하고 마이크로서비스의 동적인 탐색과 로드밸런싱을 제공한다.
+- 클라우드 환경에서는 서버의 위치가 동적으로 변하고 있기에 더욱 주목받는 기술이다.
+- Eureka 는 Eureka Server 와 Eureka Client 로 구성된다.
+- Eureka Client 의 서비스가 시작 될 때 Eureka Server 에 자신의 정보를 등록한다.
+  - 등록된 후에는 30초마다 레지스트리에 ping 을 전송하여 자신이 가용 상태임을 알리는데 일정 횟수 이상 ping 이 확인되지 않으면 Eureka Server 에서 해당 서비스를 레지스트리에서 제외시킨다.
+- 레지스트리의 정보는 모든 Eureka Client 에 복제되어 있어 필요할 때마다 가용 상태인 모든 서비스들의 목록을 확인할 수 있고 이 목록은 30초마다 갱신된다.
+  - 가용 상태의 서비스 목록을 확인할 경우에는 서비스의 이름을 기준으로 탐색하며 로드밸런싱을 위해 내부적으로 Ribbon(클라이언트 측의 로드밸런서)을 사용한다.
 
 ## 개발환경
 - JDK : Zulu JDK 17.0.10
 - SpringBoot : 3.2.3 
   - `implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server`
-  - dependency에 포함되어 있다.
+  - dependency 에 포함되어 있다.
 - SpringBoot Eureka Server : 현재 최신버전 4.1.0
 - build tools : Gradle
 
@@ -172,3 +189,14 @@ Execution failed for task ':compileJava'.
 
 #### 대부분 JVM Version 문제로 발생된 문제였음.
 - 차후 JDK 11 버전으로 개발 해봐야 겠음. 아마도 SpringBoot 2.x 버전으로 다운그래드 할 듯...
+
+## 참고 URL
+> Spring Cloud Netflix : https://cloud.spring.io/spring-cloud-netflix/reference/html/  
+> Eureka self-preservation : https://subji.github.io/posts/2020/08/11/springcloudeurekaregistry  
+> Eureka self-preservation : https://dzone.com/articles/the-mystery-of-eurekas-self-preservation
+> Eureka 설정 : https://coe.gitbook.io/guide/service-discovery/eureka
+> Eureka 설정 : https://coe.gitbook.io/guide/service-discovery/eureka_2
+> Eureka 설정 : https://velog.io/@ililil9482/series/jayeon
+> Spring Cloud 구축 : https://sjh9708.tistory.com/120
+> API Gateway in Spring boot : https://medium.com/@ankithahjpgowda/api-gateway-in-spring-boot-3ea804003021 ( https://medium.com/@ankithahjpgowda )
+> 
