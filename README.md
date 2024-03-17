@@ -1,10 +1,10 @@
 # 유레카 서버 (Eureka Server)
 
-# Spring Cloud 아키텍처 관계도
+## Spring Cloud 아키텍처 관계도
 ![크라우드 아키텍처](./md_img/cloud-3-dark.svg)
 출처 : https://spring.io/cloud
 
-# Eureka 란? ( ChatGPT )
+## Eureka 란? ( ChatGPT )
 - Eureka 는 Netflix 에서 개발한 오픈 소스 기반의 서비스 디스커버리 서버입니다. 이는 분산 시스템에서 서비스 인스턴스의 위치를 추적하고 관리하는 데 사용됩니다.  
   주요 기능은 다음과 같습니다:
   - 서비스 등록 및 검색 : Eureka 는 서비스 인스턴스가 등록되면 자동으로 검색 가능하게 만들어줍니다.  
@@ -132,8 +132,8 @@ name: discovery-service
 # eureka 설정
 eureka:
 client:
-register-with-eureka: false     # eureka server에 자신을 등록하지 않음. registry에 등록할지 여부. false로 하지 않으면 자기 자신을 클라이언트로 등록함
-fetch-registry: false           # 레지스트리 정보를 로컬에 캐싱하지 않음. registry에 있는 정보들을 가져올지 여부
+register-with-eureka: false     # eureka server 에 자신을 등록하지 않음. registry 에 등록할지 여부. false 로 하지 않으면 자기 자신을 클라이언트로 등록함
+fetch-registry: false           # 레지스트리 정보를 로컬에 캐싱하지 않음. registry 에 있는 정보들을 가져올지 여부
 ```
 
 ## Build
@@ -199,10 +199,10 @@ Execution failed for task ':compileJava'.
                   - Doesn't say anything about its elements (required them preferably in the form of class files)
 ```
 - 기본적올 Springboot 3.x는 11버전 이상이어야 함.
-- JVM Version을 올려서 해결하였음. -> Zulu JDK 17.0.10
+- JVM Version 을 올려서 해결하였음. -> Zulu JDK 17.0.10
 
 #### 대부분 JVM Version 문제로 발생된 문제였음.
-- 차후 JDK 11 버전으로 개발 해봐야 겠음. 아마도 SpringBoot 2.x 버전으로 다운그래드 할 듯...
+- 차후 JDK 11 버전으로 개발 해봐야 겠음. 아마도 SpringBoot 2.x 버전으로 다운그레드 할 듯...
 
 ## 참고 URL
 > Spring Cloud Netflix : https://cloud.spring.io/spring-cloud-netflix/reference/html/  
